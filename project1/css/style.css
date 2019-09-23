@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css?family=Creepster|Nosifer&display=swap');
+
+
+
+
+
+body {
+    background-image: url(../images/hangman.jpg);
+    background-repeat: none;
+    
+}
+
+.container {
+    width: 90%;
+    margin: auto;
+/*    background: url(https://img.wallpapersafari.com/desktop/1536/864/60/91/R21nkr.jpg);*/
+    
+    
+}
+
+
+#inner-text {
+/*    background: #ede6e6;*/
+    height: auto;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    padding-right: 1rem;
+    padding-left: 1rem;
+}
+h1 {
+    color: red;
+    font-family: 'Nosifer', cursive;
+    font-size: -webkit-xxx-large;
+    
+}
+
+
+p#guessingWord, p#numberOfLives, p#winningMessage, p#losingMessage {
+    font-size: xx-large;
+    margin-left: 30px;
+    color: red;
+    text-align: center;
+}
+* {
+  box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column1 {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  height: 800px; /* Should be removed. Only for demonstration */
+}
+
+.column2 {
+  float: left;
+  width: 40%;
+  padding: 10px;
+  height: 800px; /* Should be removed. Only for demonstration */
+}
+
+.column3 {
+  float: left;
+  width: 40%;
+  padding: 10px;
+  height: 800px; /* Should be removed. Only for demonstration */
+}
+
+
+#Instructions {
+    text-align: center;
+    margin-top: 20px;
+}
+
+
+
+
+
+
+button:disabled,
+button[disabled]{
+/*  border: 1px solid #999999;*/
+  background-color: orangered;
+  color: black;
+}
+
+
+div#winningMessage {
+    font-size: larger;
+    margin: 0px 0px 0px 100px;
+}
+
+
+
+@media screen and (max-width:700px) and (orientation:landscape) {
+ 
+    
+    
+  div#winningMessage {
+    font-size: larger;
+    margin: 100px 0px 0px -200px;
+}
+
+    
+    
+    img#theImage {
+    height: 131px;
+    margin: -19px 2px 0px 357px;
+}    
+    
+    #winningMessage {
+        font-size: 100px; 
+    }
+    
+h1 {
+    font-size: 15px;
+}
+    
+ button {
+   background-color: purple; 
+    }
+.column1 {
+    /* float: left; */
+    width: 40%;
+    /* padding: 10px; */
+    height: 1px;
+}
+
+.column2 {
+    float: left;
+    width: 60%;
+    padding: 10px;
+    height: 148px;
+}
+
+.column3 {
+    float: right;
+    width: 100%;
+    /* padding: 10px; */
+    /* height: 800px; */
+}
+
+      
+     
+     
+} 
+
+@media screen and (max-width:600px) and (orientation:portrait) {
+ 
+    
+
+    
+h1 {
+    font-size: 15px;
+}
+ button {
+   background-color: green; 
+    }
+.column1 {
+    width:100%;
+    height: 110px;
+}
+
+.column2 {
+    width:100%;
+    height: 273px;
+}
+
+.column3 {
+    width: 100%;
+
+}
+
+      
+     
+     
+} 
+    
+}

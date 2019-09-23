@@ -1,0 +1,501 @@
+<!doctype html>
+
+
+<html>
+
+<head>
+
+    <title>Hangman Game</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+
+
+
+</head>
+
+<body>
+
+
+
+    <div class="container">
+        <div id="inner-text">
+            <h1>Welcome to Hangman</h1>
+
+            <button id="guessButton" onclick="findRandomNumber();
+buttonA.disabled=false;buttonB.disabled=false;buttonC.disabled=false;buttonD.disabled=false;buttonE.disabled=false;buttonF.disabled=false;buttonG.disabled=false;buttonH.disabled=false;buttonI.disabled=false;buttonJ.disabled=false;buttonK.disabled=false;buttonL.disabled=false;buttonM.disabled=false;buttonN.disabled=false;buttonO.disabled=false;buttonP.disabled=false;buttonQ.disabled=false;buttonR.disabled=false;buttonS.disabled=false;buttonT.disabled=false;buttonU.disabled=false;buttonV.disabled=false;buttonW.disabled=false;buttonX.disabled=false;
+            buttonY.disabled=false;buttonZ.disabled=false;">
+                Click here to begin/refresh</button>
+            <a href="http://www.jameswood.uk"><button>Return to Portfolio</button></a>
+            
+
+
+
+        </div>
+        <div class="row">
+            <div class="column1">
+                <!--    <h2>Column 1</h2>-->
+                <div id="Instructions">
+
+                    <p id="alphabetGoesHere"></p>
+                    <!--        Enter one letter only:<br><input id="input"><br><button id="submitButton" onclick="doSomething()">Guess</button>-->
+                    <br>
+
+                    <div id="alphabet" style="display:none">
+                        <button id="buttonA" class="button" value="a" type="button" onclick="doSomethingElseA();this.disabled=true">A</button>
+                        <button id="buttonB" value="b" type="button" onclick="doSomethingElseB();this.disabled=true">B</button>
+                        <button id="buttonC" value="c" type="button" onclick="doSomethingElseC();this.disabled=true">C</button>
+                        <button id="buttonD" value="d" type="button" onclick="doSomethingElseD();this.disabled=true">D</button>
+                        <button id="buttonE" value="e" type="button" onclick="doSomethingElseE();this.disabled=true">E</button>
+                        <button id="buttonF" value="f" type="button" onclick="doSomethingElseF();this.disabled=true">F</button>
+                        <button id="buttonG" value="g" type="button" onclick="doSomethingElseG();this.disabled=true">G</button>
+                        <button id="buttonH" value="h" type="button" onclick="doSomethingElseH();this.disabled=true">H</button>
+                        <button id="buttonI" value="i" type="button" onclick="doSomethingElseI();this.disabled=true">I</button>
+                        <button id="buttonJ" value="j" type="button" onclick="doSomethingElseJ();this.disabled=true">J</button>
+                        <button id="buttonK" value="k" type="button" onclick="doSomethingElseK();this.disabled=true">K</button>
+                        <button id="buttonL" value="l" type="button" onclick="doSomethingElseL();this.disabled=true">L</button>
+                        <button id="buttonM" value="m" type="button" onclick="doSomethingElseM();this.disabled=true">M</button>
+                        <button id="buttonN" value="n" type="button" onclick="doSomethingElseN();this.disabled=true">N</button>
+                        <button id="buttonO" value="o" type="button" onclick="doSomethingElseO();this.disabled=true">O</button>
+                        <button id="buttonP" value="p" type="button" onclick="doSomethingElseP();this.disabled=true">P</button>
+                        <button id="buttonQ" value="q" type="button" onclick="doSomethingElseQ();this.disabled=true">Q</button>
+                        <button id="buttonR" value="r" type="button" onclick="doSomethingElseR();this.disabled=true">R</button>
+                        <button id="buttonS" value="s" type="button" onclick="doSomethingElseS();this.disabled=true">S</button>
+                        <button id="buttonT" value="t" type="button" onclick="doSomethingElseT();this.disabled=true">T</button>
+                        <button id="buttonU" value="u" type="button" onclick="doSomethingElseU();this.disabled=true">U</button>
+                        <button id="buttonV" value="v" type="button" onclick="doSomethingElseV();this.disabled=true">V</button>
+                        <button id="buttonW" value="w" type="button" onclick="doSomethingElseW();this.disabled=true">W</button>
+                        <button id="buttonX" value="x" type="button" onclick="doSomethingElseX();this.disabled=true">X</button>
+                        <button id="buttonY" value="y" type="button" onclick="doSomethingElseY();this.disabled=true">Y</button>
+                        <button id="buttonZ" value="z" type="button" onclick="doSomethingElseZ();this.disabled=true">Z</button>
+                    </div>
+                    <p id="numberofLetters"></p>
+                    <p id="chosenLetter"></p>
+
+                </div>
+            </div>
+            <div class="column2">
+                <!--    <h2>Column 2</h2>-->
+                <p id="guessingWord"></p>
+                <p id="numberOfTimesLetterAppeared"></p>
+                <p id="numberOfLives" style="color: cornsilk"> </p>
+                <p id="numberOfUnderscores"></p>
+                <div id="winningMessage">
+                    <p id="winningMessage"></p>
+                </div>
+                <p id="losingMessage"></p>
+            </div>
+            <div class="column3">
+                <h2></h2>
+                <p id="guessingWord"></p>
+                <div>
+                    <img id="theImage">
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+
+            <p align="center"> &copy; Copyright 2019, James Wood</p>
+        </footer>
+    </div>
+</body>
+<script>
+    //Below is a list of randomly generated words
+    var selectableWords = [
+        
+        "transition", "lay", "forestry", "correspondence", "posture", "royalty", "village", "asylum", "burst", "leadership", "improve", "telephone", "push", "crusade", "crash", "news", "regulation", "wedding", "victory", "convulsion", "patent", "lifestyle", "cunning", "trolley", "even", "sheep", "proclaim", "unfortunate", "minute", "environment", "bar", "defendant", "herd", "unlike", "routine", "tent", "inhibition", "cluster", "movie", "cave", "dance", "guarantee", "adjust", "reliance", "string", "hostage", "coerce", "tongue", "publish", "wrestle", "engine", "escape", "brave", "vegetation", "pound", "hook", "slave", "variation", "picture", "daughter", "prescription", "legislature", "mirror", "pie", "harmful", "demonstration", "draft", "threaten", "preoccupation", "transform", "rifle", "building", "anxiety", "safari", "revive", "killer", "contempt", "column", "sugar", "perfect", "extent", "glow", "earthflax", "fold", "inch", "modernize", "shaft", "goal", "barrel", "fountain", "terminal", "example", "philosophy", "elbow", "offend", "fashionable", "public", "illustrate", "kid", "rabbit", "pluck", "camera", "assertive", "broadcast", "commemorate", "dependence", "cross", "brag", "decoration", "product", "general", "mind", "acquit", "can", "chapter", "brick", "strike", "crowd", "guard", "soprano", "inflation", "marsh", "conversation", "compartment", "passage", "abundant", "bucket", "neighborhood", "rear", "integrity", "assembly", "monk", "platform", "myth", "jurisdiction", "discreet", "analyst", "drawer", "embrace", "want", "orthodox", "concept", "revival", "cream", "control", "freighter", "tie", "river", "chip", "snail", "catalogue", "reverse", "denial", "kidney", "wear", "bloody", "cooperation", "exclusive", "physical", "curve", "heavy", "opposite", "pavement", "stroll", "ban", "cooperate", "berry", "owe", "quotation", "yard", "neighbour", "rack", "mood", "fate", "patch", "tidy", "drop", "shout", "deviation", "rebel", "parameter", "wriggle", "arrange", "absent", "citizen", "player", "folk", "firefighter", "divorce", "bronze", "knock", "selection", "transmission", "pottery", "innovation", "species", "due", "treaty", "bacon", "grandmother", "mile", "sense", "colorful", "gradient", "deck", "pass", "perform", "implicit", "handicap", "reduce", "agile", "abolish", "wealth", "compact", "screw", "tune", "particular", "retired", "celebration", "riot", "bedroom", "trip", "crutch", "stadium", "diagram", "expression", "ticket", "park", "heal", "consideration", "survivor", "punish", "majority", "mushroom", "horror", "hope", "wonder", "fare", "moment", "color", "pig", "kick", "charity", "survey", "common", "wrist", "shortcircuit", "clothes", "edge", "peace", "indication", "gift", "spontaneous", "long", "collection", "unrest", "solo", "love", "structure", "privilege", "accurate", "chin", "throat", "quest", "failure", "breathe", "dismissal", "restaurant", "hour", "thread", "pyramid", "pressure", "fastidious", "genuine", "mud", "break", "bush", "zero", "pure", "conductor", "approval", "available", "demonstrator", "icecream", "constituency", "snow", "diameter", "emotion", "tolerate", "dark", "electron", "flight", "portrait", "consciousness", "smash", "story", "conscious", "combine", "houseplant", "mean", "mutation", "negotiation", "stain", "cellar", "attract", "title", "occupy", "decisive", "host", "favourite", "cater", "linear", "damage"
+
+
+    ]
+
+    //Declare an empty array, this will be filled with underscores depending on the length of the random word chosen by math.random in the findRandomNumber generator
+    var guessingWord = [];
+    var lives = 10;
+    const maxLives = 10;
+
+    //event1.addEventListener("load", findRandomNumber, false);
+    //document.getElementById("demo").innerHTML = "Random number is " + randomAmountOfUnderscores;
+    const maxAmountofTries = 10; //Maximum tries that a player has
+
+    /////////////////////////////////
+    /////////////////////////////////
+    /////////findRandomNumber function
+    //////////////////////////////////
+    //////////////////////////////////
+
+    //Function that creates a random number called say n. 
+    //Find the nth number in the word array
+    //Find the length of the found nth word
+    //Display the correct amount of underscores for the game to begin
+    function findRandomNumber() {
+        document.getElementById('theImage').src = "";
+        document.getElementById('winningMessage').innerHTML = "";
+        document.getElementById('losingMessage').innerHTML = "";
+
+
+
+        lives = maxLives;
+        console.log("number of live is " + lives);
+        console.log("number of maxlive is " + maxLives);
+        document.getElementById("numberOfTimesLetterAppeared").innerHTML = "";
+        document.getElementById("chosenLetter").innerHTML = "";
+        document.getElementById("numberOfLives").innerHTML = "";
+        document.getElementById('alphabet').style.display = "block";
+        randomNumber = Math.floor(Math.random() * selectableWords.length);
+        var secretWord = selectableWords[randomNumber];
+        var secretWordLength = selectableWords[randomNumber].length;
+        //console.log("Random number in the array is " + randomNumber);
+        //console.log("The secret word is " + secretWord);
+        //console.log("The secret word has " + secretWordLength + " letters");
+        //document.getElementById("alphabetGoesHere").innerHTML =
+        //    "Enter one letter only:<br><input id=\"input\"><br><button id=\"submitButton\" onclick=\"doSomething()\">Guess</button>"
+        //Clear the guessingWord array
+        guessingWord = [];
+
+
+        //Create an array of underscores that depends on the length of the word
+        for (var i = 0; i <= secretWordLength - 1; i++) {
+            guessingWord.push(" _ ");
+        }
+        //console.log("Join statement " + guessingWord.join(''));
+        //console.log("The representation of the word is ---->    " + guessingWord);
+        document.getElementById("guessingWord").innerHTML = guessingWord.join('');
+
+
+
+
+    }
+
+    //    function doSomething() {
+    //        var xxxx = document.getElementById("input").value;
+    //        var lengthOfInput = xxxx.length;
+    //
+    //        if (document.getElementById("input").value.match(/^[A-Za-z]+$/) && lengthOfInput == 1) {
+    //            //console.log("value entered is fine")
+    //            console.log("The length of the input is " + lengthOfInput);
+    //            //alert("message2");
+    //        } else {
+    //            alert("Please only enter one letter!");
+    //            return;
+    //        }
+    //
+    //
+    //
+    //        var secretWordLength = selectableWords[randomNumber].length;
+    //        //document.getElementById("chosenLetter").innerHTML = "The chosen letter is " + xxxx + "<br>" + guessingWord;
+    //        var secretWord = selectableWords[randomNumber];
+    //        console.log(secretWord);
+    //
+    //        var occurencesOfLetter = 0;
+    //        for (var i = 0; i <= secretWordLength - 1; i++) {
+    //            if (secretWord.charAt(i) == xxxx) {
+    //                guessingWord[i] = xxxx;
+    //                occurencesOfLetter = occurencesOfLetter + 1;
+    //            }
+    //        }
+    //
+    //        if (occurencesOfLetter == 0) {
+    //            lives = lives - 1;
+    //        }
+    //
+    //
+    //
+    //
+    //        document.getElementById("numberOfTimesLetterAppeared").innerHTML = "Number of times <b>" + xxxx + "</b> appeared is " + occurencesOfLetter;
+    //        document.getElementById("guessingWord").innerHTML = /*"The chosen letter is " + xxxx + "<br>" + */ guessingWord.join('');
+    //        document.getElementById("chosenLetter").innerHTML = "The chosen letter is " + xxxx;
+    //        document.getElementById("numberOfLives").innerHTML = "Number of lives is " + lives;
+    //
+    //
+    //        switch (lives) {
+    //            case 9:
+    //                document.getElementById('theImage').src = "images/hangman10.jpg";
+    //                break;
+    //            case 8:
+    //                document.getElementById('theImage').src = "images/hangman9.jpg";
+    //                break;
+    //            case 7:
+    //                document.getElementById('theImage').src = "images/hangman8.jpg";
+    //                break;
+    //            case 6:
+    //                document.getElementById('theImage').src = "images/hangman7.jpg";
+    //                break;
+    //            case 5:
+    //                document.getElementById('theImage').src = "images/hangman6.jpg";
+    //                break;
+    //            case 4:
+    //                document.getElementById('theImage').src = "images/hangman5.jpg";
+    //                break;
+    //            case 3:
+    //                document.getElementById('theImage').src = "images/hangman4.jpg";
+    //                document.getElementById("numberOfLives").innerHTML = "<b><font color=\"red\">Careful!!! You have " + lives + " lives left!!!!</b></font>";
+    //                break;
+    //            case 2:
+    //                document.getElementById('theImage').src = "images/hangman3.jpg";
+    //                document.getElementById("numberOfLives").innerHTML = "<b><font color=\"red\">Careful!!! You have " + lives + " lives left!!!!</b></font>";
+    //                break;
+    //            case 1:
+    //                document.getElementById('theImage').src = "images/hangman2.jpg";
+    //                document.getElementById("numberOfLives").innerHTML = "<b><font color=\"red\">Careful!!! You have " + lives + " life left!!!!</b></font>";
+    //                break;
+    //            case 0:
+    //                document.getElementById('theImage').src = "images/hangman1.jpg";
+    //
+    //
+    //                alert("You failed\nThe secret word was " + secretWord);
+    //                break;
+    //        }
+    //
+    //
+    //
+    //        //                if (lives == 9) {
+    //        //                    document.getElementById('theImage').src = "images/hangman10.jpg"
+    //        //                }
+    //
+    //    }
+
+
+    function doSomethingElseA() {
+        //lives = maxLives;
+        var xxxx = document.getElementById("buttonA").value;
+        doThisNow(xxxx);
+    }
+
+
+    function doSomethingElseB() {
+        var xxxx = document.getElementById("buttonB").value;
+        doThisNow(xxxx);
+    }
+
+    function doSomethingElseC() {
+        var xxxx = document.getElementById("buttonC").value;
+        doThisNow(xxxx);
+    }
+
+    function doSomethingElseD() {
+        var xxxx = document.getElementById("buttonD").value;
+        doThisNow(xxxx);
+    }
+
+    function doSomethingElseE() {
+        var xxxx = document.getElementById("buttonE").value;
+        doThisNow(xxxx);
+    }
+
+    function doSomethingElseF() {
+        var xxxx = document.getElementById("buttonF").value;
+        doThisNow(xxxx);
+    }
+
+    function doSomethingElseG() {
+        var xxxx = document.getElementById("buttonG").value;
+        doThisNow(xxxx);
+    }
+
+    function doSomethingElseH() {
+        var xxxx = document.getElementById("buttonH").value;
+        doThisNow(xxxx);
+    }
+
+    function doSomethingElseI() {
+        var xxxx = document.getElementById("buttonI").value;
+        doThisNow(xxxx);
+    }
+
+    function doSomethingElseJ() {
+        var xxxx = document.getElementById("buttonJ").value;
+        doThisNow(xxxx);
+    }
+
+    function doSomethingElseK() {
+        var xxxx = document.getElementById("buttonK").value;
+        doThisNow(xxxx);
+    }
+
+    function doSomethingElseL() {
+        var xxxx = document.getElementById("buttonL").value;
+        doThisNow(xxxx);
+    }
+
+    function doSomethingElseM() {
+        var xxxx = document.getElementById("buttonM").value;
+        doThisNow(xxxx);
+    }
+
+    function doSomethingElseN() {
+        var xxxx = document.getElementById("buttonN").value;
+        doThisNow(xxxx);
+    }
+
+    function doSomethingElseO() {
+        var xxxx = document.getElementById("buttonO").value;
+        doThisNow(xxxx);
+    }
+
+    function doSomethingElseP() {
+        var xxxx = document.getElementById("buttonP").value;
+        doThisNow(xxxx);
+    }
+
+    function doSomethingElseQ() {
+        var xxxx = document.getElementById("buttonQ").value;
+        doThisNow(xxxx);
+    }
+
+    function doSomethingElseR() {
+        var xxxx = document.getElementById("buttonR").value;
+        doThisNow(xxxx);
+    }
+
+    function doSomethingElseS() {
+        var xxxx = document.getElementById("buttonS").value;
+        doThisNow(xxxx);
+    }
+
+    function doSomethingElseT() {
+        var xxxx = document.getElementById("buttonT").value;
+        doThisNow(xxxx);
+    }
+
+    function doSomethingElseU() {
+        var xxxx = document.getElementById("buttonU").value;
+        doThisNow(xxxx);
+    }
+
+    function doSomethingElseV() {
+        var xxxx = document.getElementById("buttonV").value;
+        doThisNow(xxxx);
+    }
+
+    function doSomethingElseW() {
+        var xxxx = document.getElementById("buttonW").value;
+        doThisNow(xxxx);
+    }
+
+    function doSomethingElseX() {
+        var xxxx = document.getElementById("buttonX").value;
+        doThisNow(xxxx);
+    }
+
+    function doSomethingElseY() {
+        var xxxx = document.getElementById("buttonY").value;
+        doThisNow(xxxx);
+    }
+
+    function doSomethingElseZ() {
+        var xxxx = document.getElementById("buttonZ").value;
+        console.log("lives in the z function is " + lives);
+        doThisNow(xxxx);
+    }
+
+    function doThisNow(xxxx) {
+
+
+        console.log("lives in the dothisnow function is " + lives);
+        if (lives <= 0) {
+            alert("You cannot play this game anymore, please refresh and start again");
+
+        }
+        var lengthOfInput = xxxx.length;
+        var secretWordLength = selectableWords[randomNumber].length;
+        var secretWord = selectableWords[randomNumber];
+
+        var occurencesOfLetter = 0;
+        var numberOfUnderScores = 0;
+
+
+        for (var i = 0; i <= secretWordLength - 1; i++) {
+            if (secretWord.charAt(i) == xxxx) {
+                guessingWord[i] = xxxx;
+                occurencesOfLetter = occurencesOfLetter + 1;
+            }
+        }
+
+
+        if (occurencesOfLetter == 0) {
+            lives = lives - 1;
+        }
+        //console.log ("secret word is " + secretWord);
+        //console.log ("guessing word is " + guessingWord);
+        //var x = "_";   
+        var newGuessingWord = guessingWord.join('');
+        var newguessingWordlength = newGuessingWord.length;
+        //            console.log("secret word is " + secretWord);
+        //            console.log("secret word length is " + secretWordLength);
+        //            console.log ("guessing word is " + guessingWord);
+        //            console.log ("Newguessing word isxxxx" + newGuessingWord + "xxxx");
+        //            console.log ("Newguessing word length is " + newguessingWordlength);
+
+
+
+
+        //        document.getElementById("numberOfTimesLetterAppeared").innerHTML = "Number of times <b>" + xxxx + "</b> appeared is " + occurencesOfLetter;
+        document.getElementById("guessingWord").innerHTML = /*"The chosen letter is " + xxxx + "<br>" + */ guessingWord.join('');
+        document.getElementById("chosenLetter").innerHTML = "Last entered letter <b>" + xxxx + "</b>";
+        document.getElementById("numberOfLives").innerHTML = "Remaining lives " + lives;
+        //document.getElementById("numberOfUnderscores").innerHTML = "Number of underscores is " + numberOfUnderScores;
+
+
+        console.log("newguessingWordlength is " + newguessingWordlength + "     secretWordLength " + secretWordLength);
+        if (newguessingWordlength == secretWordLength) {
+            document.getElementById('numberOfLives').innerHTML = "";
+            document.getElementById('winningMessage').innerHTML = "<b><font color=\"greenyellow\">Well done!!!</font><br><font color=\"cornsilk\">The secret word was </font>" + "<font color=\"greenyellow\">" + secretWord + "</font><br><font color=\"cornsilk\">Click refresh to play again.</font>"
+
+
+            // alert("You completed the game!\nThe secret word was in fact " + secretWord + "\nClick refresh to play again.");
+        } else {
+            switch (lives) {
+                case 9:
+                    document.getElementById('theImage').src = "images/hangman10.jpg";
+                    break;
+                case 8:
+                    document.getElementById('theImage').src = "images/hangman9.jpg";
+                    break;
+                case 7:
+                    document.getElementById('theImage').src = "images/hangman8.jpg";
+                    break;
+                case 6:
+                    document.getElementById('theImage').src = "images/hangman7.jpg";
+                    break;
+                case 5:
+                    document.getElementById('theImage').src = "images/hangman6.jpg";
+                    break;
+                case 4:
+                    document.getElementById('theImage').src = "images/hangman5.jpg";
+                    break;
+                case 3:
+                    document.getElementById('theImage').src = "images/hangman4.jpg";
+                    document.getElementById("numberOfLives").innerHTML = "<b><font color=\"red\" style=\"font-size: -webkit-xxx-large;font-family: 'Nosifer', cursive;\">" + lives + " lives left!!!!</b></font>";
+                    break;
+                case 2:
+                    document.getElementById('theImage').src = "images/hangman3.jpg";
+                    document.getElementById("numberOfLives").innerHTML = "<b><font color=\"red\" style=\"font-size: -webkit-xxx-large;font-family: 'Nosifer', cursive;\">" + lives + " lives left!!!!</b></font>";
+                    break;
+                case 1:
+                    document.getElementById('theImage').src = "images/hangman2.jpg";
+                    document.getElementById("numberOfLives").innerHTML = "<b><font color=\"red\" style=\"font-size: -webkit-xxx-large;font-family: 'Nosifer', cursive;\">" + lives + " life left!!!!</b></font>";
+                    break;
+                case 0:
+                    document.getElementById('theImage').src = "images/hangman1.jpg";
+                    document.getElementById('numberOfLives').innerHTML = "";
+                    document.getElementById('losingMessage').innerHTML = "<b><font color=\"red\">You failed :-(</font><br>The secret word was " + "<font color=\"red\">" + secretWord + "</font><br>Click refresh to play again."
+                    //alert("You failed\nThe secret word was " + secretWord + "\nClick refresh to play again.");
+                    break;
+
+            }
+            //                <p id="winningMessage"></p>
+            //                <p id ="losingMessage"></p>
+
+
+
+
+        }
+    }
+
+</script>
+
+
+
+
+</html>
